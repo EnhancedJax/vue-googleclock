@@ -1,5 +1,7 @@
 <template>
-  <HelloWorld>
-    Hello world!
-  </HelloWorld>
+  <Body class="bg-cblue-800 text-ctext-50">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </Body>
 </template>
