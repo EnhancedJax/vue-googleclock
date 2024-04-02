@@ -40,7 +40,7 @@
         />
       </div>
     </div>
-    <div class="fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full font-light pointer-events-none text-ctext-400" v-show="search.length <= 2">
+    <div class="fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full font-light pointer-events-none text-ctext-400" v-show="search.length <= 1">
       <svg-icon
         type="mdi"
         size="128"
@@ -101,6 +101,7 @@ export default {
   },
   methods: {
     toggleBelowDiv() {
+      console.log( this.showBelowDiv);
       this.showBelowDiv = !this.showBelowDiv;
     },
     addNewCity(city, timezone) {
@@ -119,7 +120,9 @@ export default {
       } else {
         this.cityLookup = cityTimezones
           .findFromCityStateProvince(this.search)
+          .filter(item => item.timezone !== null)
           .slice(0, 10);
+        // console.log( this.search, this.search.length,  this.cityLookup)
         return this.search;
       }
     },
