@@ -8,7 +8,10 @@
     <NavbarButton iconName="Stopwatch" :isActive="currentPage === 'Stopwatch'"/>
     <NavbarButton iconName="Bedtime" :isActive="currentPage === 'Bedtime'"/>
   </nav>
-  <slot />
+  <div class="px-6 pt-12 pb-10">
+    <h1 class="text-2xl font-light text-ctext-200">Clock</h1>
+    <slot />
+  </div>
 </template>
 
 <script setup lang="js">

@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="`/${iconName == 'Clock' ? '' : iconName}`">
-    <div class="flex flex-col items-center gap-2 text-ctext-100" @click="goToRoot">
+    <div class="flex flex-col items-center gap-2 text-ctext-100">
       <div :class="['px-5 py-1 rounded-full', {'bg-cblue-100': isActive}]">
         <svg-icon type="mdi" size="24" :path="icon"></svg-icon>
       </div>
