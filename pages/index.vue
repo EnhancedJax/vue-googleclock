@@ -3,7 +3,7 @@
     <Clock />
     <Date />
   </div>
-  <draggable v-model="cities" element="div" tag="div" item-key="tz">
+  <draggable v-model="cities" element="div" tag="div" item-key="tz" @end="writeLocalStorage()">
     <template #item="{ element: city }" :key="city.tz">
       <div>
         <Timezone :location="city.location" :timezone="city.tz"/>
@@ -103,6 +103,14 @@ export default {
       ],
     };
   },
+  mounted() {
+    const savedList = localStorage.getItem("worldClocks");
+    if (savedList) {
+      this.cities = JSON.parse(savedList);
+    } else {
+      localStorage.setItem("worldClocks", JSON.stringify(this.cities));
+    }
+  },
   methods: {
     toggleBelowDiv() {
       console.log( this.showBelowDiv);
@@ -112,9 +120,14 @@ export default {
       this.cities.push({ location: city, tz: timezone });
       this.showBelowDiv = false;
       this.search = "";
+      this.writeLocalStorage();
     },
     removeCity(city) {
       this.cities = this.cities.filter((c) => c.location !== city);
+      this.writeLocalStorage();
+    },
+    writeLocalStorage() {
+      localStorage.setItem("worldClocks", JSON.stringify(this.cities));
     },
   },
   watch: {
