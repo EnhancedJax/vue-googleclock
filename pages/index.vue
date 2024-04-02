@@ -6,7 +6,7 @@
   <draggable v-model="cities" element="div" tag="div" item-key="tz" @end="writeLocalStorage()">
     <template #item="{ element: city }" :key="city.tz">
       <div>
-        <Timezone :location="city.location" :timezone="city.tz"/>
+        <Timezone :location="city.location" :timezone="city.tz" @contextmenu="removeCity(city.location)"/>
       </div>
     </template>
   </draggable>
