@@ -10,6 +10,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+
       colors: {
         'cblue': {
           100: '#404758',
@@ -25,6 +26,9 @@ module.exports = {
           400: '#92949C',
           500: '#3F414A'
         }
+      },
+      screens: {
+        'xs': '500px'
       },
     },
   },
