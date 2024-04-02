@@ -1,4 +1,4 @@
 <template>
-  <h1>Bedtime</h1>
-</template>
-  
+  <p>Just a page.</p>
+ </template>
+   

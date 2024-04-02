@@ -1,4 +1,4 @@
 <template>
-  <h1>Alarm</h1>
+ <p>Just a page.</p>
 </template>
   
