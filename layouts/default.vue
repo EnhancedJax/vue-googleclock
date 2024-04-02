@@ -18,7 +18,7 @@
 const route = useRoute()
 var currentPage = ref(route.name)
 
-watch(() => {
+watchEffect(() => {
   currentPage.value = route.name
 })
 </script>

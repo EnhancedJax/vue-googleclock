@@ -1,10 +1,10 @@
 <template>
   <NuxtLink :to="`/${iconName == 'Clock' ? '' : iconName}`">
     <div class="flex flex-col items-center gap-2 text-ctext-100">
-      <div :class="['px-5 py-1 rounded-full', {'bg-cblue-100': isActive}]">
+      <div :class="`px-5 py-1 rounded-full ${isActive ? 'bg-cblue-100': ''}`">
         <svg-icon type="mdi" size="24" :path="icon"></svg-icon>
       </div>
-      <p :class="['text-xs font-medium text-ctext-300', {'text-white': isActive}]"">{{iconName}}</p>
+      <p :class="`text-xs font-medium text-ctext-300 ${isActive ? 'text-white' : ''}`">{{iconName}}</p>
     </div>
     </NuxtLink>
 </template>
