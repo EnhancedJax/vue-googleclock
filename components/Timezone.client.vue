@@ -1,5 +1,5 @@
 <template>
-    <div class="flex justify-between items-center w-full p-8 rounded-[32px] bg-cblue-700 mb-2">
+    <div class="flex justify-between items-center w-full p-8 rounded-[32px] bg-cblue-700 mb-2 cursor-pointer">
         <div>
             <p class="mb-1 text-xl font-light text-ctext-200">{{location}}</p>
             <p class="text-sm font-light text-ctext-300">{{offset < 0 ? offset : `+${offset}`}}h</p>

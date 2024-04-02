@@ -3,11 +3,13 @@
     <Clock />
     <Date />
   </div>
-  <ul>
-    <li v-bind:key="city.tz" v-for="city in cities">
-      <Timezone :location="city.location" :timezone="city.tz" @contextmenu="removeCity(city.location)"/>
-    </li>
-  </ul>
+  <draggable v-model="cities" element="div" tag="div" item-key="tz">
+    <template #item="{ element: city }" :key="city.tz">
+      <div>
+        <Timezone :location="city.location" :timezone="city.tz"/>
+      </div>
+    </template>
+  </draggable>
   <div
     class="fixed left-0 flex justify-center w-full pb-4 bottom-20"
     @click="toggleBelowDiv"
@@ -73,11 +75,13 @@
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiPlus, mdiArrowLeft, mdiMagnify } from "@mdi/js";
 import cityTimezones from "city-timezones";
+import draggable from 'vuedraggable'
 
 export default {
   name: "my-component",
   components: {
     SvgIcon,
+    draggable
   },
   data() {
     return {

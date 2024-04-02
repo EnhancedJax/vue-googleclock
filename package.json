@@ -15,7 +15,8 @@
     "city-timezones": "^1.2.1",
     "nuxt": "^3.11.1",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
