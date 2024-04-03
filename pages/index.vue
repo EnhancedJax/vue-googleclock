@@ -12,10 +12,10 @@
   </draggable>
   <div
     class="absolute left-0 flex justify-center w-full pb-4 bottom-20"
-    @click="toggleBelowDiv"
   >
     <div
       class="flex items-center justify-center w-24 h-24 rounded-full cursor-pointer bg-cblue-400 text-cblue-800"
+      @click="toggleBelowDiv"
     >
       <svg-icon type="mdi" :path="mdiPlus"></svg-icon>
     </div>

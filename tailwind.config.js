@@ -25,6 +25,10 @@ module.exports = {
           300: '#BBBFC8',
           400: '#92949C',
           500: '#3F414A'
+        },
+        'cpurple': {
+          400: '#E4B6E8',
+          700: '#43274F'
         }
       },
       screens: {
