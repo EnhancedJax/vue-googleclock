@@ -43,10 +43,24 @@
       <svg-icon type="mdi" :path="mdiPlay"></svg-icon>
     </div>
   </div>
+  <div
+    class="absolute left-0 flex items-center w-full h-24 px-12 mb-4 bottom-20"
+    v-show="timers.length > 0 && inputstatus"
+  >
+    <div
+      class="flex items-center justify-center rounded-full cursor-pointer w-14 h-14 bg-cpurple-700 text-cpurple-400"
+      @click="
+        inputstatus = !inputstatus;
+        inputduration = '';
+      "
+    >
+      <svg-icon type="mdi" :path="mdiTrashCanOutline"></svg-icon>
+    </div>
+  </div>
   <!-- ------------- Timers -------------  -->
 
   <div class="w-full" v-show="timers.length > 0 && !inputstatus">
-    <div class="absolute left-0 flex justify-center w-full pb-4 bottom-20">
+    <div class="absolute left-0 z-20 flex justify-center w-full pb-4 bottom-20">
       <div
         class="flex items-center justify-center w-24 h-24 rounded-full cursor-pointer bg-cblue-400 text-cblue-800"
         @click="newTimer()"
@@ -67,7 +81,7 @@
 
 <script>
 import SvgIcon from "@jamescoyle/vue-icon";
-import { mdiPlay, mdiPlus } from "@mdi/js";
+import { mdiPlay, mdiPlus, mdiTrashCanOutline } from "@mdi/js";
 
 export default {
   name: "Timer",
@@ -76,12 +90,24 @@ export default {
       inputduration: "",
       mdiPlay: mdiPlay,
       mdiPlus: mdiPlus,
+      mdiTrashCanOutline: mdiTrashCanOutline,
       timers: [],
       inputstatus: false,
     };
   },
   components: {
     SvgIcon,
+  },
+  mounted() {
+    const savedTimers = localStorage.getItem("timers");
+    if (savedTimers) {
+      this.timers = JSON.parse(savedTimers);
+    } else {
+      localStorage.setItem("timers", JSON.stringify(this.timers));
+    }
+  },
+  unmounted() {
+    localStorage.setItem("timers", JSON.stringify(this.timers));
   },
   methods: {
     addTime(value) {
@@ -113,15 +139,14 @@ export default {
         parseInt(this.inputduration.padStart(6, "0").slice(2, 4)) * 60 +
         parseInt(this.inputduration.padStart(6, "0").slice(4, 6));
       this.timers.push({
-        durationSecs: durationSecs,
-        running: true,
-        originalDuration: durationSecs,
+        durationRemainSecs: durationSecs,
+        isRunning: true,
+        isIdle: false,
+        totalDurationSecs: durationSecs,
         startTime: new Date().getTime(),
-        addedSecs: 0,
       });
       this.inputduration = "";
       this.inputstatus = false;
-      console.log(this.timers);
     },
     newTimer() {
       this.inputstatus = true;

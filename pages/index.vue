@@ -3,16 +3,24 @@
     <Clock />
     <Date />
   </div>
-  <draggable v-model="cities" element="div" tag="div" item-key="tz" @end="writeLocalStorage()">
+  <draggable
+    v-model="cities"
+    element="div"
+    tag="div"
+    item-key="tz"
+    @end="writeLocalStorage()"
+  >
     <template #item="{ element: city }" :key="city.tz">
       <div>
-        <Timezone :location="city.location" :timezone="city.tz" @contextmenu="removeCity(city.location)"/>
+        <Timezone
+          :location="city.location"
+          :timezone="city.tz"
+          @contextmenu="removeCity(city.location)"
+        />
       </div>
     </template>
   </draggable>
-  <div
-    class="absolute left-0 flex justify-center w-full pb-4 bottom-20"
-  >
+  <div class="absolute left-0 flex justify-center w-full pb-4 bottom-20">
     <div
       class="flex items-center justify-center w-24 h-24 rounded-full cursor-pointer bg-cblue-400 text-cblue-800"
       @click="toggleBelowDiv"
@@ -42,12 +50,11 @@
         />
       </div>
     </div>
-    <div class="fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full font-light pointer-events-none text-ctext-400" v-show="search.length <= 1">
-      <svg-icon
-        type="mdi"
-        size="128"
-        :path="mdiMagnify"
-      ></svg-icon>
+    <div
+      class="fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full font-light pointer-events-none text-ctext-400"
+      v-show="search.length <= 1"
+    >
+      <svg-icon type="mdi" size="128" :path="mdiMagnify"></svg-icon>
       Search for a city
     </div>
     <div class="font-light text-ctext-200">
@@ -75,13 +82,13 @@
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiPlus, mdiArrowLeft, mdiMagnify } from "@mdi/js";
 import cityTimezones from "city-timezones";
-import draggable from 'vuedraggable'
+import draggable from "vuedraggable";
 
 export default {
   name: "my-component",
   components: {
     SvgIcon,
-    draggable
+    draggable,
   },
   data() {
     return {
@@ -113,7 +120,6 @@ export default {
   },
   methods: {
     toggleBelowDiv() {
-      console.log( this.showBelowDiv);
       this.showBelowDiv = !this.showBelowDiv;
     },
     addNewCity(city, timezone) {
@@ -137,9 +143,8 @@ export default {
       } else {
         this.cityLookup = cityTimezones
           .findFromCityStateProvince(this.search)
-          .filter(item => item.timezone !== null)
+          .filter((item) => item.timezone !== null)
           .slice(0, 10);
-        // console.log( this.search, this.search.length,  this.cityLookup)
         return this.search;
       }
     },

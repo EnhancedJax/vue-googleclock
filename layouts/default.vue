@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="absolute bottom-0 left-0 flex items-center justify-between w-full h-20 px-2 bg-cblue-500"
+    class="absolute bottom-0 left-0 z-50 flex items-center justify-between w-full h-20 px-2 bg-cblue-500"
   >
     <NavbarButton iconName="Alarm" :isActive="currentPage === 'Alarm'" />
     <NavbarButton iconName="Clock" :isActive="currentPage === 'index'" />
