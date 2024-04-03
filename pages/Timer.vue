@@ -33,29 +33,29 @@
     </div>
   </div>
   <div
-    class="absolute left-0 flex justify-center w-full pb-4 bottom-20"
+    class="absolute left-0 flex justify-center w-full pb-4 pointer-events-none bottom-20"
     v-show="inputduration.length > 0"
   >
-    <div
-      class="flex items-center justify-center w-24 h-24 rounded-full cursor-pointer bg-cblue-400 text-cblue-800"
+    <button
+      class="flex items-center justify-center w-24 h-24 rounded-full pointer-events-auto bg-cblue-400 text-cblue-800"
       @click="pushTimer()"
     >
       <svg-icon type="mdi" :path="mdiPlay"></svg-icon>
-    </div>
+    </button>
   </div>
   <div
-    class="absolute left-0 flex items-center w-full h-24 px-12 mb-4 bottom-20"
+    class="absolute left-0 flex items-center w-full h-24 px-12 mb-4 pointer-events-none bottom-20"
     v-show="timers.length > 0 && inputstatus"
   >
-    <div
-      class="flex items-center justify-center rounded-full cursor-pointer w-14 h-14 bg-cpurple-700 text-cpurple-400"
+    <button
+      class="flex items-center justify-center rounded-full pointer-events-auto w-14 h-14 bg-cpurple-700 text-cpurple-400"
       @click="
         inputstatus = !inputstatus;
         inputduration = '';
       "
     >
       <svg-icon type="mdi" :path="mdiTrashCanOutline"></svg-icon>
-    </div>
+    </button>
   </div>
   <!-- ------------- Timers -------------  -->
 
